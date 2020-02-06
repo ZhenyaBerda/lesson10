@@ -9,32 +9,39 @@ books.insertBefore(book[2], null);
 books.insertBefore(book[4], book[3]);
 
 //изменение картинки
-document.querySelector('body').style.backgroundImage = "url(./image/you-dont-know-js.jpg)";
+const body = document.querySelector('body');
+body.style.backgroundImage = "url(./image/you-dont-know-js.jpg)";
 
 // исправление заголовков
 book[4].querySelector('a').textContent = 'Книга 3. this и Прототипы Объектов';
 
 // удаление рекламы
-document.querySelector('.adv').remove();
-
-// восстановление глав книг
-const chapterList = document.querySelectorAll('ul'),
-    chapter = document.querySelectorAll('li');
+const adv = document.querySelector('.adv');
+adv.remove();
 
 // восстановление глав книги 2
-chapterList[1].insertBefore(chapter[9], chapter[8]);
-chapterList[1].insertBefore(chapter[8], chapter[16]);
-chapterList[1].insertBefore(chapter[14], chapter[10]);
-chapterList[1].insertBefore(chapter[12], chapter[14]);
+let chapterList = document.querySelectorAll('.book ul')[1],
+    chapter = chapterList.querySelectorAll('li');
+
+// восстановление глав книги 2
+chapterList.insertBefore(chapter[3], chapter[2]);
+chapterList.insertBefore(chapter[6], chapter[4]);
+chapterList.insertBefore(chapter[8], chapter[4]);
+chapterList.insertBefore(chapter[2], chapter[10]);
 
 // восстановление глав книги 5
-chapterList[4].insertBefore(chapter[45], chapter[38]);
-chapterList[4].insertBefore(chapter[39], chapter[38]);
-chapterList[4].insertBefore(chapter[40], chapter[38]);
-chapterList[4].insertBefore(chapter[41], chapter[44]);
+chapterList = document.querySelectorAll('.book ul')[4];
+chapter = chapterList.querySelectorAll('li');
+
+chapterList.insertBefore(chapter[9], chapter[2]);
+chapterList.insertBefore(chapter[2], chapter[6]);
+chapterList.insertBefore(chapter[5], chapter[8]);
 
 // добавление главы 8 в 6 книгу
 const newChapter = document.createElement('li');
 newChapter.textContent = 'Глава 8: За пределами ES6';
-chapterList[5].appendChild(newChapter);
-chapterList[5].insertBefore(chapter[56], null);
+chapterList = document.querySelectorAll('.book ul')[5];
+chapter = chapterList.querySelectorAll('li');
+console.log(chapter);
+chapterList.appendChild(newChapter);
+chapterList.insertBefore(chapter[9], null);
